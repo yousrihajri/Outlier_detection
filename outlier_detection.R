@@ -11,7 +11,8 @@ isnt_out_z <- function(x, thres = 3, na.rm = TRUE) {
 isnt_out_mad <- function(x, thres = 3, na.rm = TRUE) {
   abs(x - median(x, na.rm = na.rm)) <= thres * mad(x, na.rm = na.rm)
 }
-#Tukey's fences is a technique used in box plots. The non-outlier range is defined with \([Q_1 - k(Q_3 - Q_1),~ Q_3 + k(Q_3 - Q_1)]\), where \(Q_1\) and \(Q_3\) are the lower and upper quartiles respectively, \(k\) - some nonnegative constant (popular choice is 1.5).
+#Tukey's fences is a technique used in box plots. The non-outlier range is defined with \([Q_1 - k(Q_3 - Q_1),~ Q_3 + k(Q_3 - Q_1)]\),
+# where \(Q_1\) and \(Q_3\) are the lower and upper quartiles respectively, \(k\) - some nonnegative constant (popular choice is 1.5).
 # Observation is not an outlier based on Tukey's fences if its value lies in non-outlier range.
 isnt_out_tukey <- function(x, k = 1.5, na.rm = TRUE) {
   quar <- quantile(x, probs = c(0.25, 0.75), na.rm = na.rm)
